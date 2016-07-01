@@ -13,6 +13,13 @@
 #import "YTKChainRequest.h"
 #import "LLDoSignApi.h"
 #import "LLUploadOnePictureApi.h"
+#import "MenuView.h"
+
+//避免宏循环引用
+#define LLWeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o;
+#define LLStrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak;
+#define LLKeyWindowSize [UIScreen mainScreen].bounds.size
+
 
 
 static NSDictionary *dictFromJsonData(NSData *returnData){
@@ -24,6 +31,8 @@ static NSDictionary *dictFromJsonData(NSData *returnData){
 
 @interface ViewController ()<YTKChainRequestDelegate>
 
+@property (nonatomic,strong) MenuView *menuView;
+
 @end
 
 @implementation ViewController
@@ -31,48 +40,51 @@ static NSDictionary *dictFromJsonData(NSData *returnData){
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-//    [self loginButtonPressed];
-//    [self loginDoSign];
-//    [self getLiLongCNCImage];
-    
-//    [self sendBatchRequest];
-//    [self sendChainRequest];
-    
-//    [self loadLoginCacheData];
-    
-    //上传文件
-    [self uploadonePicture];
+    [self initSubViews];
 }
 
-#pragma mark ================ 上传文件 ================
-- (void)uploadonePicture{
-//    ZCApiUploadAction *upload = [[ZCApiUploadAction alloc] initWithURL:@"/deal.ashx"];
-//    //        upload.params = [NSMutableDictionary dictionaryWithDictionary:parameters];
-//    upload.params[@"action"] = @"uploadphoto";
-//    upload.params[@"CustomerID"] = @"C0016050400001";
-//    upload.params[@"Type"] = @"OfflineProduct";
-//    upload.params[@"flowId"] = @"160628100654295";
-//    
-//    
-//    upload.showLog = YES;
-//    upload.data = imageDatass;
-//    upload.uploadName = @"data";
-//    upload.fileName = @"photo.png";
-//    upload.mimeType = @"image/png";
-//    
-//    
-//    
-//    [[ZCApiRunner sharedInstance] uploadAction:upload progress:^(NSProgress *uploadProgress) {
-//        NSLog(@"🐱🐱🐱progress: %@",uploadProgress);
-//        
-//    } success:^(id object) {
-//        NSLog(@"🐷🐷🐷upload successed:%@",object);
-//        
-//        
-//    } failure:^(NSError *error) {
-//        NSLog(@"🐶🐶🐶upload failed:%@",error);
-//    }];
+- (void)initSubViews{
+    _menuView = ({
+        MenuView *menuView = [[MenuView alloc] initWithFrame:(CGRect){0,0,LLKeyWindowSize.width,LLKeyWindowSize.height}];
+        [self.view addSubview:menuView];
+        @LLWeakObj(self);
+        [menuView setMenuViewOnClick:^(NSString *title) {
+            @LLStrongObj(self);
+            if ([title isEqualToString:@"登录"]) {
+                [self ll_loginRequest];
+            }else if ([title isEqualToString:@"签到"]) {
+                [self ll_doSignRequest];
+            }
+            else if ([title isEqualToString:@"单图上传"]) {
+                [self ll_uploadOnePicture];
+            }else if ([title isEqualToString:@"多图上传"]) {
+//                [self ll_morePicturesUpload];
+            }else if ([title isEqualToString:@"单个图片下载"]) {
+                [self ll_downLoadOnePictureRequest];
+            }else if ([title isEqualToString:@"batch"]) {
+                [self ll_batchRequest];
+            }else if ([title isEqualToString:@"chain"]) {
+                [self ll_chainRequest];
+            }else if ([title isEqualToString:@"先用缓存后请求"]) {
+                [self ll_loadLoginCacheData];
+            }else if ([title isEqualToString:@""]) {
+            }else if ([title isEqualToString:@""]) {
+            }else if ([title isEqualToString:@""]) {
+            }else if ([title isEqualToString:@""]) {
+            }else if ([title isEqualToString:@""]) {
+            }else if ([title isEqualToString:@""]) {
+            }else if ([title isEqualToString:@""]) {
+            }else if ([title isEqualToString:@""]) {
+            }else if ([title isEqualToString:@""]) {
+            }
+            
+        }];
+        menuView;
+    });
+    
+}
+#pragma mark ================ 上传单个文件 ================
+- (void)ll_uploadOnePicture{
     
     LLUploadOnePictureApi *upOnePictureApi = [[LLUploadOnePictureApi alloc] initWithImage:[UIImage imageNamed:@"1"]];
 
@@ -87,15 +99,17 @@ static NSDictionary *dictFromJsonData(NSData *returnData){
 
 
 #pragma mark ================ 优先获取缓存 ================
-- (void)loadLoginCacheData {
+- (void)ll_loadLoginCacheData {
     
     LLYTKLoginApi *loginApi = [[LLYTKLoginApi alloc] initWithUserName:@"15801538221" password:@"E10ADC3949BA59ABBE56E057F20F883E"];
-//    if ([loginApi cacheJson]) {
-//        NSDictionary *json = [loginApi cacheJson];
-//        NSLog(@"json = %@", json);
-//        // show cached data
-//    }
-//    
+    
+    //cacheJson必须实现 - (NSInteger)cacheTimeInSeconds 方法,注意这个时候请求不是每次都有的.在规定时间间隔之后才能再次发起请求
+    if ([loginApi cacheJson]) {
+        NSDictionary *json = [loginApi cacheJson];
+        NSLog(@"json = %@", json);
+        // show cached data
+    }
+    
     [loginApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest *request) {
         NSLog(@"update ui");
         NSLog(@"loadLoginCacheData new Data:%@",request.responseJSONObject);
@@ -107,8 +121,8 @@ static NSDictionary *dictFromJsonData(NSData *returnData){
 
 
 
-#pragma mark ================ chainReuqest ================
-- (void)sendChainRequest {
+#pragma mark ================ chainReuqest 及其回调方法 ================
+- (void)ll_chainRequest {
 
     LLYTKLoginApi *reg = [[LLYTKLoginApi alloc] initWithUserName:@"15801538221" password:@"E10ADC3949BA59ABBE56E057F20F883E"];
     YTKChainRequest *chainReq = [[YTKChainRequest alloc] init];
@@ -166,7 +180,7 @@ static NSDictionary *dictFromJsonData(NSData *returnData){
 
 
 #pragma mark ================ batchRequest ================
-- (void)sendBatchRequest {
+- (void)ll_batchRequest {
     
     
     LLYTKLoginApi *a = [[LLYTKLoginApi alloc] initWithUserName:@"15801538221" password:@"E10ADC3949BA59ABBE56E057F20F883E"];
@@ -197,21 +211,10 @@ static NSDictionary *dictFromJsonData(NSData *returnData){
 
 
 #pragma mark ================ 使用CDN加载图片 ================
-- (void) getLiLongCNCImage{
+- (void) ll_downLoadOnePictureRequest{
     LLYTKGetImageApi *imageApi = [[LLYTKGetImageApi alloc] initWithImageId:@"1.png"];
     
-    
-//    NSLog(@"%@",[imageApi cacheJson]);
-//    if ([imageApi cacheJson]) {
-//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 100, 350, 100)];
-//        imageView.image = [imageApi cacheJson];
-//        [self.view insertSubview:imageView aboveSubview:self.view];
-//
-//    }
-    
     [imageApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest *request) {
-        
-        
 //        [self showResultLog:request];
 //        [self showResultLog:request];
         NSLog(@"request.responseJSONObject:%@",request.responseJSONObject);
@@ -233,23 +236,18 @@ static NSDictionary *dictFromJsonData(NSData *returnData){
 
 #pragma mark ================ 登陆验证 ================
 //htt://192.168.1.194:1800/JoinCustomer.ashx?action=login&userAccount=15801538221&Passwd=E10ADC3949BA59ABBE56E057F20F883E&version=1.0&BusinessAreaID=
-- (void)loginButtonPressed{
+- (void)ll_loginRequest{
     
-    //判断输入的账户名和密码是否合法
-    
-    //发送请求
+
+    //如果实现 - (NSInteger)cacheTimeInSeconds 方法,注意这个时候请求不是每次都有的.在规定时间间隔之后才能再次发起请求
     LLYTKLoginApi *loginApi = [[LLYTKLoginApi alloc] initWithUserName:@"15801538221" password:@"E10ADC3949BA59ABBE56E057F20F883E"];
+    
     [loginApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest *request) {
-        //注意：你可以直接在block回调中使用 self，不用担心循环引用。因为 YTKRequest 会在执行完 block 回调之后，将相应的 block 设置成 nil。从而打破循环引用
-        
         
         //注意：你可以直接在block回调中使用 self，不用担心循环引用。因为 YTKRequest 会在执行完 block 回调之后，将相应的 block 设置成 nil。从而打破循环引用
 //        [self showResultLog:request];
-        
-
         //dictFromJsonData(request.responseData)
         NSLog(@"login result ->%@",request.responseJSONObject);
-        
         
     } failure:^(__kindof YTKBaseRequest *request) {
         NSLog(@"LLYTKLoginApi failed");
@@ -258,7 +256,7 @@ static NSDictionary *dictFromJsonData(NSData *returnData){
 }
 
 
-- (void)loginDoSign{
+- (void)ll_doSignRequest{
     
     //发送请求
     LLDoSignApi *doSignApi = [[LLDoSignApi alloc] init];

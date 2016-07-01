@@ -52,15 +52,13 @@
     return self.requestOperation.responseObject;
 }
 
-//- (YTKRequestSerializerType)requestSerializerType {
-//    return YTKRequestSerializerTypeHTTP | YTKRequestSerializerTypeJSON;
-//}
 
-////按时间缓存内容
-//- (NSInteger)cacheTimeInSeconds {
-//    // 3分钟 = 180 秒
+//按时间缓存内容
+- (NSInteger)cacheTimeInSeconds {
+    // 3分钟 = 180 秒
 //    return 60 * 3;
-//}
+    return 5;
+}
 
 
 //验证返回数据格式

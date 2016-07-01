@@ -42,7 +42,7 @@
     
     NSLog(@"%s  %@",__FUNCTION__,NSStringFromCGRect(self.frame));
     
-    NSArray *titleArray = @[@"登录",@"签到",@"单图上传",@"多图上传",@"单个图片下载",@"batch",@"chain"];
+    NSArray *titleArray = @[@"登录",@"先用缓存后请求",@"签到",@"单图上传",@"多图上传",@"单个图片下载",@"batch",@"chain"];
     
     int flag = 2;
 
