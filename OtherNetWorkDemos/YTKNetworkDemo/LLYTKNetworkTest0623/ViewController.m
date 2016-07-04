@@ -21,7 +21,7 @@
 #define LLKeyWindowSize [UIScreen mainScreen].bounds.size
 
 
-
+//Data转json
 static NSDictionary *dictFromJsonData(NSData *returnData){
     NSDictionary *content = [NSJSONSerialization JSONObjectWithData:returnData options:NSJSONReadingMutableContainers error:nil];//转换数据格式
     return content;

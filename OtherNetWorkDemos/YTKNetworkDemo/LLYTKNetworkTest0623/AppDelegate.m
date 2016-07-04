@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "YTKNetworkConfig.h"
 #import "LLYTKUrlCommonParamsFilter.h"
+#import "YTKNetworkAgent.h"
 
 
 @interface AppDelegate ()
@@ -41,11 +42,14 @@
 //    config.cdnUrl = @"set release sever CDN address";
     
     //设置全局请求公共参数
-    LLYTKUrlCommonParamsFilter *urlFilter = [LLYTKUrlCommonParamsFilter ll_filterWithArguments:
-                                                @{@"version": @"1.0"}
-                                                                                                    ];
+//    LLYTKUrlCommonParamsFilter *urlFilter = [LLYTKUrlCommonParamsFilter ll_filterWithArguments:
+//                                                @{@"version": @"1.0"}];
+    
 //    [config addUrlFilter:urlFilter];
 
+    //KVC返回设置contentType
+    NSSet *contentTypeSet = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json",@"text/html",@"text/css", nil];
+    [[YTKNetworkAgent sharedInstance] setValue:contentTypeSet forKeyPath:@"_manager.responseSerializer.acceptableContentTypes"];
     
 }
 

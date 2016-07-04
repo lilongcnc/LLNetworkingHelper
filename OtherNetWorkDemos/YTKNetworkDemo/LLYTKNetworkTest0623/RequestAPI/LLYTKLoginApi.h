@@ -7,7 +7,7 @@
 //
 
 #import "YTKRequest.h"
-
+// 登录
 @interface LLYTKLoginApi : YTKRequest
 
 - (id)initWithUserName:(NSString *)userName password:(NSString *)password;
