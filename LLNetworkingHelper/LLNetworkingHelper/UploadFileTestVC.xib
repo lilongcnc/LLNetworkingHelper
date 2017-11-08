@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UploadFileTestVC">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传文件测试,需要配置对应服务器参数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJ3-fZ-MqN">
+                    <rect key="frame" x="10" y="70" width="355" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="HeB-46-hXj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3az-Cq-Uiz">
+                    <rect key="frame" x="16" y="101" width="345" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.74901338309999999" blue="0.91207879800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="3dY-BQ-xT6"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="TyC-h3-rQ2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="上传单张图片">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="uploadOneImage:" destination="-1" eventType="touchUpInside" id="b2z-xE-UG8"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCD-Gr-Z2Y">
+                    <rect key="frame" x="16" y="161" width="345" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.74901338309999999" blue="0.91207879800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="esw-Qx-g7s"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="上传多张图片">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="uploadImageArray:" destination="-1" eventType="touchUpInside" id="wlX-GG-UUs"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywp-H2-Fgs">
+                    <rect key="frame" x="16" y="221" width="345" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.74901338309999999" blue="0.91207879800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="上传一个日志文件">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="ueploadTEXTFile:" destination="-1" eventType="touchUpInside" id="G9R-Xk-ZvB"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6E-Yf-gBz">
+                    <rect key="frame" x="16" y="281" width="345" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.74901338309999999" blue="0.91207879800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="上传一个视频文件">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="uploadVideoFile:" destination="-1" eventType="touchUpInside" id="2hn-RZ-jQh"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ES0-Pr-Uis">
+                    <rect key="frame" x="16" y="339" width="345" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.74901338309999999" blue="0.91207879800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="完全自定义上传多图">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="DIYUploadImages:" destination="-1" eventType="touchUpInside" id="Xen-Xg-fZn"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGW-wk-c7M">
+                    <rect key="frame" x="16" y="432" width="345" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.74901338309999999" blue="0.91207879800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="取消全部请求">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelTask:" destination="-1" eventType="touchUpInside" id="mi2-Wu-qyF"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="L6E-Yf-gBz" firstAttribute="top" secondItem="ywp-H2-Fgs" secondAttribute="bottom" constant="10" id="0QW-G5-SQD"/>
+                <constraint firstItem="ES0-Pr-Uis" firstAttribute="trailing" secondItem="L6E-Yf-gBz" secondAttribute="trailing" id="8Kv-U2-Gsg"/>
+                <constraint firstItem="ES0-Pr-Uis" firstAttribute="height" secondItem="L6E-Yf-gBz" secondAttribute="height" id="9oZ-eW-JfP"/>
+                <constraint firstItem="bJ3-fZ-MqN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Aaa-DD-Ihl"/>
+                <constraint firstItem="KCD-Gr-Z2Y" firstAttribute="height" secondItem="3az-Cq-Uiz" secondAttribute="height" id="CNW-RP-c1g"/>
+                <constraint firstItem="L6E-Yf-gBz" firstAttribute="leading" secondItem="ywp-H2-Fgs" secondAttribute="leading" id="D44-Y2-6c7"/>
+                <constraint firstItem="KCD-Gr-Z2Y" firstAttribute="trailing" secondItem="3az-Cq-Uiz" secondAttribute="trailing" id="IX1-s1-jEr"/>
+                <constraint firstItem="wGW-wk-c7M" firstAttribute="leading" secondItem="ES0-Pr-Uis" secondAttribute="leading" id="K5y-e6-z5J"/>
+                <constraint firstItem="wGW-wk-c7M" firstAttribute="trailing" secondItem="ES0-Pr-Uis" secondAttribute="trailing" id="KRm-aa-qP2"/>
+                <constraint firstAttribute="trailing" secondItem="bJ3-fZ-MqN" secondAttribute="trailing" constant="10" id="RsX-IL-Aee"/>
+                <constraint firstItem="ywp-H2-Fgs" firstAttribute="trailing" secondItem="KCD-Gr-Z2Y" secondAttribute="trailing" id="SdP-mf-vHZ"/>
+                <constraint firstItem="L6E-Yf-gBz" firstAttribute="trailing" secondItem="ywp-H2-Fgs" secondAttribute="trailing" id="ZCj-hb-LNU"/>
+                <constraint firstItem="KCD-Gr-Z2Y" firstAttribute="leading" secondItem="3az-Cq-Uiz" secondAttribute="leading" id="Zzn-Gi-pWh"/>
+                <constraint firstItem="KCD-Gr-Z2Y" firstAttribute="top" secondItem="3az-Cq-Uiz" secondAttribute="bottom" constant="10" id="cpU-4d-V6i"/>
+                <constraint firstItem="3az-Cq-Uiz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="d5X-Pn-ap6"/>
+                <constraint firstItem="wGW-wk-c7M" firstAttribute="top" secondItem="ES0-Pr-Uis" secondAttribute="bottom" constant="43" id="fOP-DQ-zA7"/>
+                <constraint firstItem="ywp-H2-Fgs" firstAttribute="top" secondItem="KCD-Gr-Z2Y" secondAttribute="bottom" constant="10" id="htm-t0-5vn"/>
+                <constraint firstItem="ES0-Pr-Uis" firstAttribute="leading" secondItem="L6E-Yf-gBz" secondAttribute="leading" id="i0S-zV-hbG"/>
+                <constraint firstItem="L6E-Yf-gBz" firstAttribute="height" secondItem="ywp-H2-Fgs" secondAttribute="height" id="kfM-s2-gDE"/>
+                <constraint firstItem="bJ3-fZ-MqN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="moH-cZ-R4l"/>
+                <constraint firstItem="ES0-Pr-Uis" firstAttribute="top" secondItem="L6E-Yf-gBz" secondAttribute="bottom" constant="8" id="nzC-m5-XoX"/>
+                <constraint firstItem="wGW-wk-c7M" firstAttribute="height" secondItem="ES0-Pr-Uis" secondAttribute="height" id="scg-Bo-dNd"/>
+                <constraint firstAttribute="trailing" secondItem="3az-Cq-Uiz" secondAttribute="trailing" constant="14" id="sdr-tP-nW9"/>
+                <constraint firstItem="3az-Cq-Uiz" firstAttribute="top" secondItem="bJ3-fZ-MqN" secondAttribute="bottom" constant="15" id="wfj-C2-Jip"/>
+                <constraint firstItem="ywp-H2-Fgs" firstAttribute="leading" secondItem="KCD-Gr-Z2Y" secondAttribute="leading" id="ysr-Vm-Kqb"/>
+                <constraint firstItem="ywp-H2-Fgs" firstAttribute="height" secondItem="KCD-Gr-Z2Y" secondAttribute="height" id="zlm-Es-EXx"/>
+            </constraints>
+            <point key="canvasLocation" x="-405" y="-51"/>
+        </view>
+    </objects>
+</document>

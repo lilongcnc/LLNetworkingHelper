@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CacheTestController">
+            <connections>
+                <outlet property="cacheData" destination="cSX-Xt-YUm" id="LHD-0I-KUl"/>
+                <outlet property="networkData" destination="KSq-OH-kpn" id="drP-SW-y0G"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KSq-OH-kpn">
+                    <rect key="frame" x="10" y="90" width="355" height="200"/>
+                    <color key="backgroundColor" red="0.40455750410000002" green="0.90588235289999997" blue="0.85719883450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cSX-Xt-YUm">
+                    <rect key="frame" x="10" y="298" width="355" height="200"/>
+                    <color key="backgroundColor" red="0.96883469820000001" green="0.5330530376" blue="0.27926141199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CnD-gO-CyK">
+                    <rect key="frame" x="0.0" y="510" width="187.5" height="35"/>
+                    <color key="backgroundColor" red="0.52600381540697672" green="0.91817314680232553" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="E2g-nv-Jcz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="请求一(GET,5s缓存)">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="requestOne:" destination="-1" eventType="touchUpInside" id="IO1-5a-zsg"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pmv-5a-PTA">
+                    <rect key="frame" x="195" y="510" width="187.5" height="35"/>
+                    <color key="backgroundColor" red="0.52600381539999996" green="0.91817314679999995" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="请求二(GET,10s缓存)">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="requestTwo:" destination="-1" eventType="touchUpInside" id="5xx-lQ-tNn"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFm-6M-ccR">
+                    <rect key="frame" x="195" y="557" width="187.5" height="35"/>
+                    <color key="backgroundColor" red="0.52600381539999996" green="0.91817314679999995" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="请求四(POST,10s缓存)">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="requestFour:" destination="-1" eventType="touchUpInside" id="CJB-gL-Fsi"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xmy-Q7-I7A">
+                    <rect key="frame" x="195" y="604" width="187.5" height="35"/>
+                    <color key="backgroundColor" red="0.52600381539999996" green="0.91817314679999995" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="请求六(POST,5m缓存)">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="requestSix:" destination="-1" eventType="touchUpInside" id="cxJ-Yg-Xpa"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYe-wC-3fc">
+                    <rect key="frame" x="0.0" y="557" width="187.5" height="35"/>
+                    <color key="backgroundColor" red="0.52600381539999996" green="0.91817314679999995" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="请求三(POST,5s缓存)">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="requestThree:" destination="-1" eventType="touchUpInside" id="vmp-Su-1qj"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQj-kW-JjB">
+                    <rect key="frame" x="0.0" y="604" width="187.5" height="35"/>
+                    <color key="backgroundColor" red="0.52600381539999996" green="0.91817314679999995" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="请求五(POST,1m缓存)">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="requestFive:" destination="-1" eventType="touchUpInside" id="JmZ-4v-lmB"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记得改回你的网络环境状态,再加个秒表." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ci2-VV-VUh">
+                    <rect key="frame" x="10" y="70" width="355" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="AAP-fX-he9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="CFm-6M-ccR" firstAttribute="trailing" secondItem="Pmv-5a-PTA" secondAttribute="trailing" id="0SB-gg-YPO"/>
+                <constraint firstItem="CFm-6M-ccR" firstAttribute="width" secondItem="Pmv-5a-PTA" secondAttribute="width" id="5mw-AZ-8sM"/>
+                <constraint firstItem="cSX-Xt-YUm" firstAttribute="top" secondItem="KSq-OH-kpn" secondAttribute="bottom" constant="8" id="7vC-CC-ofi"/>
+                <constraint firstItem="Pmv-5a-PTA" firstAttribute="height" secondItem="CnD-gO-CyK" secondAttribute="height" id="9LN-7t-7p9"/>
+                <constraint firstItem="QQj-kW-JjB" firstAttribute="top" secondItem="WYe-wC-3fc" secondAttribute="bottom" constant="12" id="BpP-KM-o9V"/>
+                <constraint firstItem="Xmy-Q7-I7A" firstAttribute="width" secondItem="CFm-6M-ccR" secondAttribute="width" id="BxK-CD-pnA"/>
+                <constraint firstItem="Ci2-VV-VUh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="F8w-JP-Ynp"/>
+                <constraint firstItem="CnD-gO-CyK" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.5" id="Ijq-Mg-wWi"/>
+                <constraint firstItem="Pmv-5a-PTA" firstAttribute="top" secondItem="cSX-Xt-YUm" secondAttribute="bottom" constant="12" id="JZQ-Ce-d9z"/>
+                <constraint firstAttribute="trailing" secondItem="Ci2-VV-VUh" secondAttribute="trailing" constant="10" id="LOI-XD-rRV"/>
+                <constraint firstItem="WYe-wC-3fc" firstAttribute="width" secondItem="CnD-gO-CyK" secondAttribute="width" id="Rka-hp-goR"/>
+                <constraint firstItem="KSq-OH-kpn" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="S2c-AF-B0M"/>
+                <constraint firstItem="QQj-kW-JjB" firstAttribute="height" secondItem="WYe-wC-3fc" secondAttribute="height" id="Yb5-xK-HDp"/>
+                <constraint firstItem="WYe-wC-3fc" firstAttribute="height" secondItem="CnD-gO-CyK" secondAttribute="height" id="apZ-KD-Iti"/>
+                <constraint firstItem="cSX-Xt-YUm" firstAttribute="leading" secondItem="KSq-OH-kpn" secondAttribute="leading" id="bVY-IH-f4e"/>
+                <constraint firstItem="CnD-gO-CyK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="chv-87-ppa"/>
+                <constraint firstItem="Xmy-Q7-I7A" firstAttribute="height" secondItem="CFm-6M-ccR" secondAttribute="height" id="dLg-4H-ajO"/>
+                <constraint firstItem="KSq-OH-kpn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="dWh-rK-b2v"/>
+                <constraint firstItem="Pmv-5a-PTA" firstAttribute="leading" secondItem="CnD-gO-CyK" secondAttribute="trailing" constant="7.5" id="grH-jM-Jig"/>
+                <constraint firstItem="QQj-kW-JjB" firstAttribute="width" secondItem="WYe-wC-3fc" secondAttribute="width" id="hP4-uE-Ch4"/>
+                <constraint firstItem="QQj-kW-JjB" firstAttribute="leading" secondItem="WYe-wC-3fc" secondAttribute="leading" id="iX9-Wo-tSn"/>
+                <constraint firstItem="CnD-gO-CyK" firstAttribute="top" secondItem="cSX-Xt-YUm" secondAttribute="bottom" constant="12" id="mha-Nd-MMZ"/>
+                <constraint firstItem="Pmv-5a-PTA" firstAttribute="top" secondItem="CnD-gO-CyK" secondAttribute="top" id="n8t-QU-aNS"/>
+                <constraint firstAttribute="trailing" secondItem="KSq-OH-kpn" secondAttribute="trailing" constant="10" id="nQs-vX-CIS"/>
+                <constraint firstItem="CFm-6M-ccR" firstAttribute="height" secondItem="Pmv-5a-PTA" secondAttribute="height" id="o8h-46-ckN"/>
+                <constraint firstItem="KSq-OH-kpn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="ryo-rH-483"/>
+                <constraint firstItem="WYe-wC-3fc" firstAttribute="top" secondItem="CnD-gO-CyK" secondAttribute="bottom" constant="12" id="sDC-L0-afK"/>
+                <constraint firstItem="Xmy-Q7-I7A" firstAttribute="trailing" secondItem="CFm-6M-ccR" secondAttribute="trailing" id="sdF-HG-bzH"/>
+                <constraint firstItem="WYe-wC-3fc" firstAttribute="leading" secondItem="CnD-gO-CyK" secondAttribute="leading" id="tDy-Om-pwW"/>
+                <constraint firstItem="cSX-Xt-YUm" firstAttribute="trailing" secondItem="KSq-OH-kpn" secondAttribute="trailing" id="uPO-OR-HBO"/>
+                <constraint firstItem="Pmv-5a-PTA" firstAttribute="width" secondItem="CnD-gO-CyK" secondAttribute="width" id="vQT-SX-5pc"/>
+                <constraint firstItem="Xmy-Q7-I7A" firstAttribute="top" secondItem="CFm-6M-ccR" secondAttribute="bottom" constant="12" id="vfk-J6-6yX"/>
+                <constraint firstItem="CFm-6M-ccR" firstAttribute="top" secondItem="Pmv-5a-PTA" secondAttribute="bottom" constant="12" id="xP3-xB-vV9"/>
+                <constraint firstItem="cSX-Xt-YUm" firstAttribute="height" secondItem="KSq-OH-kpn" secondAttribute="height" id="yTj-ZN-9On"/>
+                <constraint firstItem="Ci2-VV-VUh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="yf3-UI-3ce"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="-345"/>
+        </view>
+    </objects>
+</document>
